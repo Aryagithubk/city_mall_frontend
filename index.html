@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Response Coordination Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Disaster Response Coordination Platform</h1>
+            <div class="user-info">
+                <select id="userSelect">
+                    <option value="netrunnerX">NetrunnerX (Admin)</option>
+                    <option value="reliefAdmin">Relief Admin</option>
+                    <option value="citizen1">Citizen 1</option>
+                    <option value="citizen2">Citizen 2</option>
+                </select>
+            </div>
+        </header>
+
+        <main>
+            <!-- Disaster Form -->
+            <section class="form-section">
+                <h2>Report Disaster</h2>
+                <form id="disasterForm">
+                    <input type="text" id="title" placeholder="Disaster Title" required>
+                    <input type="text" id="locationName" placeholder="Location Name (e.g., Manhattan, NYC)">
+                    <textarea id="description" placeholder="Description" rows="3" required></textarea>
+                    <input type="text" id="tags" placeholder="Tags (comma-separated, e.g., flood,urgent)">
+                    <button type="submit">Create Disaster</button>
+                </form>
+            </section>
+
+            <!-- Report Form -->
+            <section class="form-section">
+                <h2>Submit Report</h2>
+                <form id="reportForm">
+                    <select id="disasterId" required>
+                        <option value="">Select Disaster</option>
+                    </select>
+                    <textarea id="reportContent" placeholder="Report Content" rows="3" required></textarea>
+                    <input type="url" id="imageUrl" placeholder="Image URL (optional)">
+                    <button type="submit">Submit Report</button>
+                </form>
+            </section>
+
+            <!-- Geocoding Test -->
+            <section class="form-section">
+                <h2>Test Geocoding</h2>
+                <form id="geocodeForm">
+                    <textarea id="geocodeDescription" placeholder="Enter description with location" rows="2"></textarea>
+                    <button type="submit">Extract & Geocode</button>
+                </form>
+                <div id="geocodeResult"></div>
+            </section>
+
+            <!-- Disasters List -->
+            <section class="list-section">
+                <h2>Active Disasters</h2>
+                <div id="disastersList"></div>
+            </section>
+
+            <!-- Social Media Feed -->
+            <section class="list-section">
+                <h2>Social Media Updates</h2>
+                <div id="socialMediaFeed"></div>
+            </section>
+
+            <!-- Resources -->
+            <section class="list-section">
+                <h2>Available Resources</h2>
+                <div id="resourcesList"></div>
+            </section>
+
+            <!-- Official Updates -->
+            <section class="list-section">
+                <h2>Official Updates</h2>
+                <div id="officialUpdates"></div>
+            </section>
+
+            <!-- Real-time Status -->
+            <div class="status-bar">
+                <span id="connectionStatus">Disconnected</span>
+                <span id="lastUpdate">Last update: Never</span>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
